@@ -1,4 +1,18 @@
-# NOTE
+# UPDATED NOTE
+This is a fork from bpennypacker/SenseME-Indigo-Plugin version 0.7.0
+
+This only works with the old firmware (Haiku by BAF app)
+
+This plugin has been updated to Python 3 for Indigo 2023.1
+
+After upgrading, if you see any errors, you need to reconfigure each fan device.  Edit Device Settings for each device and click Save.  That should fix it.  You only need to do this the first time after upgrading.
+
+I have done some refactoring of how commands are sent, and have added some eatra error checking.  I have done some minimal testing and it seems to work.
+
+You can report bugs here and I will attempt to fix them, but I do not intend to maintain this plugin indefinitely.  Hopefully someone can write a new plugin for the new firmware.
+
+# ORIGINAL NOTE
+
 This project is no longer supported, in part because Big Ass Solutions has completely rewritten their firmware and this plug-in is not compatible with it, and in part because I no longer use Indigo. This project will remain on Github for historical purposes.
 
 # SenseME-Indigo-Plugin
