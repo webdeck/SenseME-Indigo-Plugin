@@ -5,19 +5,12 @@
 	<key>CFBundleDisplayName</key>
 	<string>SenseME Fan</string>
 	<key>PluginVersion</key>
-	<string>0.7.0</string>
+	<string>0.8.0</string>
 	<key>ServerApiVersion</key>
-	<string>1.19</string>
+	<string>3.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pennypacker.indigoplugin.senseme</string>
 	<key>CFBundleVersion</key>
 	<string>1.0.0</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>http://bruce.pennypacker.org/tag/senseme-plugin/</string>
-		</dict>
-	</array>
 </dict>
 </plist>
