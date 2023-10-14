@@ -67,12 +67,12 @@ class FanListener(threading.Thread):
 
         # Send a GETALL to the newly connected fan to learn al about it
         msg = "<%s;GETALL>" % ( self.fanID )
-        self.sock.send(msg.encode('ascii'))
+        self.sock.send(msg.encode())
 
         # GETALL apparently doesn't return the status of the motion detector, so also request
         # the motion detector status
         msg = "<%s;SNSROCC;STATUS;GET>" % ( self.fanID )
-        self.sock.send(msg.encode('ascii'))
+        self.sock.send(msg.encode())
 
     def run(self):
         self.__connect_to_fan(False)
@@ -87,7 +87,7 @@ class FanListener(threading.Thread):
 
                 ready = select.select([self.sock], [], [], 5)
                 if ready[0]:
-                    data = self.sock.recv(2048).decode('ascii')
+                    data = self.sock.recv(2048).decode()
                     self.tick = int(time.time())
 
                     data = self.leftover + data
@@ -163,14 +163,14 @@ class Plugin(indigo.PluginBase):
             sock.settimeout(5)
             sock.connect((fanIP, 31415))
 
-            sock.send(msg.encode('ascii'))
+            sock.send(msg.encode())
 
             if receive == False:
                 self.DebugMsg("sent %s" % (msg))
                 sock.close()
                 return True
 
-            status = sock.recv(1024).decode('ascii')
+            status = sock.recv(1024).decode()
             sock.close()
         except socket.error as e:
             self.DebugMsg("queryFan %s %s failed. %s" % (fanIP, msg, str(e)))
@@ -678,7 +678,7 @@ class Plugin(indigo.PluginBase):
             self.DebugMsg("sending command %s to %s" % (cmd, fanIP))
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             msg = cmd + '\n'
-            sock.sendto(msg.encode('ascii'), (fanIP, 31415))
+            sock.sendto(msg.encode(), (fanIP, 31415))
 
     ########################################
     def setFanSpeed(self, action):
@@ -864,4 +864,4 @@ class Plugin(indigo.PluginBase):
         self.DebugMsg("Sending %s" % ( message ))
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.sendto(message.encode('ascii'), (fanIP, 31415))
+        sock.sendto(message.encode(), (fanIP, 31415))
